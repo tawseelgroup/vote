@@ -1,0 +1,23 @@
+{% extends "index.html" %} {% block content %}
+<div class="list-group m-auto w-25 py-5">
+  <ul>
+    <div class="my-2 fw-semibold text-primary">{{title.title}}</div>
+    {% for choice in choices %}
+    <li class="list-group-item d-flex justify-content-between">
+      <div>{{choice.choice_text}}</div>
+      <span class="badge text-bg-success px-1 badge1">{{choice.votes}} votes</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="d-flex justify-content-around">
+    <a href="{% url "vote" title.id %}" class="p-2 bg-primary text-white px-2 rounded">vote</a>
+    <a href="/" class=" bg-secondary text-white p-2 rounded px-2">back</a>
+  </div>
+</div>
+<style>
+  .badge1{
+    line-height:16px;
+    font-size: 12px
+  }
+</style>
+{% endblock content %}

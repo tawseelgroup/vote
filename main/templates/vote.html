@@ -1,0 +1,19 @@
+{% extends "index.html" %} {% block content %}
+<form action="{% url 'voted' %}" method='POST'>
+    {% csrf_token %}
+    <div class="list-group m-auto w-25 py-5">
+      <div class="my-2 fw-semibold text-primary">{{title.title}}</div>
+      {% for choice in choices %}
+      <li class="list-group-item d-flex justify-content-between">
+        <div>{{choice.choice_text}}</div>
+        <input type="radio" name='sel' value={{choice.id}}/>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="d-flex justify-content-around m-3">
+      <button type='submit' class="border border-primary rounded p-2 bg-primary text-white p-2">vote</button>
+      <a href="/" class="p-2 bg-secondary text-white p-2 rounded ">back</a>
+    </div>
+    </div>
+</form>
+{% endblock content %}
